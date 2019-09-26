@@ -1,4 +1,6 @@
-## My reasonably-awesome list of useful-things-I-shall-not-forget
+---
+title: My reasonably-awesome list of useful-things-I-shall-not-forget
+---
 
 ## Index
 
