@@ -25,11 +25,11 @@
 #### ClusterHAT
 <p>The Cluster HAT (Hardware Attached on Top) interfaces a standard form-factor Raspberry Pi with 4 Raspberry Pi Zeros configured to use USB Gadget mode.</p>
 - [Cluster HAT](https://clusterhat.com/)
-  - [Setup](https://clusterhat.com/setup-overview)
-    - [Assembly](https://clusterhat.com/setup-assembly)
-    - [Software](https://clusterhat.com/setup-software)
-    - [Control](https://clusterhat.com/setup-control)
-  - [Detailed steps](raspi_clusterhat_install.md) - local file
+    - [Setup](https://clusterhat.com/setup-overview)
+        - [Assembly](https://clusterhat.com/setup-assembly)
+        - [Software](https://clusterhat.com/setup-software)
+        - [Control](https://clusterhat.com/setup-control)
+    - [Detailed steps](raspi_clusterhat_install.md) - local file
 
 #### Python
 
