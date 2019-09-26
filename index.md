@@ -1,6 +1,6 @@
 # My not-so-awesome list of useful-things-I-shall-not-forget
 
-## Contents
+## Index
 
 - [Coding](#coding)
 - [Virtualization](#virtualization)
