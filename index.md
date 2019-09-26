@@ -6,20 +6,21 @@
 - [Virtualization](#virtualization)
 
 ## Topics
-<hr>
 
 ### Coding
 
-- [Go]
-- [Python]
+- [Go](#go)
+- [Python](#python)
 
 ### Virtualization
 
-- [Docker]
-- [Kubernetes]
+- [Docker](#docker)
+- [Kubernetes](#kubernetes)
+- [Rancher](#k3s)
 
 ##
-<hr>
+
+<!-- This is a comment, as such it should not be displayed -->
 
 #### Python
 
@@ -42,7 +43,7 @@ _You **can** combine them_
    1. Item 3a
    1. Item 3b
 
-##### Go
+#### Go
 
 I think you should use an
 `<addr>` element here instead.
