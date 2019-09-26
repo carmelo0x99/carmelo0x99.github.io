@@ -7,7 +7,9 @@ $ sudo dd if=ClusterCTRL-2019-04-08-lite-4-<type>.img of=/dev/<device> bs=1M
 ```
 
 <p>Before unmounting the SDs, run the following:</p>
-`$ touch /media/<your-username>/boot/ssh`
+```
+$ touch /media/<your-username>/boot/ssh
+```
 
 #### On the Controller board
 ```
