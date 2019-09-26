@@ -20,10 +20,25 @@
 
 ##
 
-<!-- This is a comment, as such it should not be displayed -->
+<!-- Contents Begin -->
+
+#### ClusterHAT
+<p>The Cluster HAT (Hardware Attached on Top) interfaces a standard form-factor Raspberry Pi with 4 Raspberry Pi Zeros configured to use USB Gadget mode.</p>
+- [Cluster HAT](https://clusterhat.com/)
+  - [Setup](https://clusterhat.com/setup-overview)
+    - [Assembly](https://clusterhat.com/setup-assembly)
+    - [Software](https://clusterhat.com/setup-software)
+    - [Control](https://clusterhat.com/setup-control)
+  - [Detailed steps](raspi_clusterhat_install.md) - local file
 
 #### Python
 
+
+#### Go
+
+<!-- Contents End -->
+
+<!-- Examples, commented out
 *This text will be italic*
 _This will also be italic_
 
@@ -43,10 +58,7 @@ _You **can** combine them_
    1. Item 3a
    1. Item 3b
 
-#### Go
-
-I think you should use an
-`<addr>` element here instead.
+I think you should use an `<addr>` element here instead.
 
 
 ```javascript
@@ -74,3 +86,4 @@ First Header | Second Header
 ------------ | -------------
 Content from cell 1 | Content from cell 2
 Content in the first column | Content in the second column
+-->
