@@ -27,9 +27,9 @@
 
 - [Cluster HAT](https://clusterhat.com/)
     - [Setup](https://clusterhat.com/setup-overview)
-        - [Assembly](https://clusterhat.com/setup-assembly) - Assembly
-        - [Software](https://clusterhat.com/setup-software) - Software
-        - [Control](https://clusterhat.com/setup-control) - Control
+        - [Assembly](https://clusterhat.com/setup-assembly)
+        - [Software](https://clusterhat.com/setup-software)
+        - [Control](https://clusterhat.com/setup-control)
     - [Detailed steps](raspi_clusterhat_install.md) - installation steps, local file
 
 #### Python
