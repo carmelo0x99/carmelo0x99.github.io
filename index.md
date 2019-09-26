@@ -1,16 +1,16 @@
-## My not-so-awesome list of useful-things-I-shall-not-forget
+# My not-so-awesome list of useful-things-I-shall-not-forget
 
 ## Contents
 
 - [Coding](#coding)
 - [Virtualization](#virtualization)
 
-## Coding
+### Coding
 
 - [Go]
 - [Python]
 
-## Virtualization
+### Virtualization
 
 - [Docker]
 - [Kubernetes]
