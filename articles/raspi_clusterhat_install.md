@@ -62,17 +62,11 @@ p4:1
 #### Serial connection (useful to troubleshoot SSH issues)
 ```
 $ minicom p[N]
-p[N] login: pi
-Password:
-Last login: Tue Sep 24 15:37:25 CEST 2019 from 172.19.181.254 on pts/0
-Linux p[N] 4.19.66+ #1253 Thu Aug 15 11:37:30 BST 2019 armv6l
-
-The programs included with the Debian GNU/Linux system are free software;
-the exact distribution terms for each program are described in the
-individual files in /usr/share/doc/*/copyright.
-
-Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
-permitted by applicable law.
+ p[N] login: pi
+ Password:
+ Last login: Tue Sep 24 15:37:25 CEST 2019 from xxx.xxx.xxx.xxx on pts/0
+ Linux p[N] 4.19.66+ #1253 Thu Aug 15 11:37:30 BST 2019 armv6l
+...
 ```
 **NOTE**: to quit Minicom use CTRL-A-X
 
