@@ -78,6 +78,7 @@ permitted by applicable law.
 
 #### All commands
 Command | Purpose
+------- | ---------
 $ clusterctrl on | Turn power to all Pi Zero on
 $ clusterctrl off | Turn power to all Pi Zero off
 $ clusterctrl on p1 | Turn power on to Pi Zero in slot P1
