@@ -1,7 +1,7 @@
 ### On any available computers, write the images onto the SDs
 &lt;type&gt; = CNAT, p1-p4<br/>
-&lt;device&gt; = e.g /dev/sdb, /dev/mmcblk0...
-
+&lt;device&gt; = e.g /dev/sdb, /dev/mmcblk0...<br/>
+**NOTE**: in Sep/2019 I've chosen "Stretch"
 ```
 $ sudo dd if=ClusterCTRL-2019-04-08-lite-4-<type>.img of=/dev/<device> bs=1M
 ```
