@@ -30,7 +30,8 @@
         - [Assembly](https://clusterhat.com/setup-assembly)
         - [Software](https://clusterhat.com/setup-software)
         - [Control](https://clusterhat.com/setup-control)
-    - [Detailed steps](articles/raspi_clusterhat_install.md) - installation steps, local file
+    - [Detailed steps](articles/raspi_clusterhat_install.md)
+- [Docker Swarm](articles/docker_swarm_clusterhat.md)
 
 #### Python
 
