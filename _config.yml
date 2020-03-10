@@ -2,7 +2,7 @@
 title: My reasonably-awesome list of how-tos and useful-things-I-shall-not-forget
 author:
   name: CarmeloC
-  email: your-email@domain.com
+#  email: your-email@domain.com
 description: > # this means to ignore newlines until "show_excerpts:"
   This is just a place where I shall collect anything I find interesting
   and worth saving for future reference.
