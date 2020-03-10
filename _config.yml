@@ -4,11 +4,10 @@ title: My reasonably-awesome list of how-tos and useful-things-I-shall-not-forge
 #  name: GitHub User
 #  email: your-email@domain.com
 description: > # this means to ignore newlines until "show_excerpts:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  This is just a place where I shall collect anything I find interesting
+  and worth saving for future reference.
 
-show_excerpts: false # set to true to show excerpts on the homepage
+show_excerpts: true # set to true to show excerpts on the homepage
 
 # Minima date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
@@ -18,6 +17,7 @@ minima:
   # generate social links in footer
   social_links:
     linkedin: carmelo
+    keybase: carmelo
     twitter: ccalifan
     github: carmeloc 
     # devto: jekyll
@@ -32,7 +32,6 @@ minima:
     # telegram: jekyll
     # googleplus: +jekyll
     # microdotblog: jekyll
-    # keybase: jekyll
 
     # Mastodon instances
     # mastodon:
