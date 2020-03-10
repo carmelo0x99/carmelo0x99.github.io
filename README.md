@@ -1,6 +1,6 @@
 [//]: # My reasonably-awesome list of how-tos and useful-things-I-shall-not-forget
 
-## Index
+## __Index__
 - [Coding](#coding)
 - [Virtualization](#virtualization)
 
@@ -14,19 +14,19 @@
 - [Kubernetes](#kubernetes)
 - [Rancher](#k3s)
 
-## Contents
+## __Contents__
 
 <!-- Contents Begin -->
 
-#### ClusterHAT
-The [Cluster HAT](https://clusterhat.com/) (**H**ardware **A**ttached on **T**op) interfaces a standard form-factor Raspberry Pi with 4 Raspberry Pi Zeros configured to use USB Gadget mode<br/>
+### ClusterHAT
+  The [Cluster HAT](https://clusterhat.com/) (**H**ardware **A**ttached on **T**op) interfaces a standard form-factor Raspberry Pi with 4 Raspberry Pi Zeros configured to use USB Gadget mode<br/>
 - [Installation steps](articles/raspi_clusterhat_install.md)
 - [Docker Swarm](articles/docker_swarm_clusterhat.md)
 
-#### Python
+### Python
 
 
-#### Go
+### Go
 
 <!-- Contents End -->
 
