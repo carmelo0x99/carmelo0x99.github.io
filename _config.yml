@@ -1,8 +1,8 @@
 # Based on: https://github.com/jekyll/minima
 title: My reasonably-awesome list of how-tos and useful-things-I-shall-not-forget
-#author:
-#  name: GitHub User
-#  email: your-email@domain.com
+author:
+  name: CarmeloC
+  email: your-email@domain.com
 description: > # this means to ignore newlines until "show_excerpts:"
   This is just a place where I shall collect anything I find interesting
   and worth saving for future reference.
