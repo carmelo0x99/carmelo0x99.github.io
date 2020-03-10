@@ -100,3 +100,8 @@ lorem ipsum dolor sit | lorem ipsum dolor sit | lorem ipsum dolor sit | lorem ip
 lorem ipsum dolor sit | lorem ipsum dolor sit | lorem ipsum dolor sit | lorem ipsum dolor sit
 lorem ipsum dolor sit | lorem ipsum dolor sit | lorem ipsum dolor sit | lorem ipsum dolor sit
 
+Title 1               | Title 2
+--------------------- | ---------------------
+lorem                 | lorem ipsum
+lorem ipsum dolor sit | lorem ipsum dolor sit
+
