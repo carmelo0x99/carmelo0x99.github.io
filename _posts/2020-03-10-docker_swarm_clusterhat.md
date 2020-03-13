@@ -96,7 +96,7 @@ pi@zero $ docker logs multiarch10
 
 <a name="quick"></a>
 ### Quick fix: start from a compatible base layer, arm32v6 images!
-Let's edit `Dockerfile` as follows:</br>
+Let's edit `Dockerfile` as follows:
 ```
 pi@ctrl $ diff Dockerfile.ori Dockerfile
 1c1
@@ -138,7 +138,8 @@ pi@zero $ docker run --name multiarch11 carmeloc/multiarch:1.1
 Hello World, I'm 574f49b7c3b9 running on linux/arm
 ```
 
-**Problem resolved**!?!</br>
+**Problem resolved**!?!
+</br>
 Er, yes, but that leaves us a bit unimpressed, no? There's not a lot of information on the why-and-wherefore, right?</br>
 </br>
 
@@ -164,7 +165,7 @@ do
 done
 ```
 
-The deployment onto Docker Swarm can now take place.</br>
+The deployment onto Docker Swarm can now take place.
 ```
 pi@ctrl $ docker service create --name=testbuildx --replicas=3 carmeloc/multiarch:2.1
 ignplys08j32yfp3u2cu7ngbf
