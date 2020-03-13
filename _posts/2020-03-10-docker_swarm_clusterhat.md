@@ -84,7 +84,7 @@ pi@ctrl $ docker run --rm --name multiarch carmeloc/multiarch:1.0
 Hello World, I'm 61b41404280c running on linux/arm
 ```
 
-Let's do the same on the Pi Zeros.</br>
+Let's do the same on the Pi Zeros.
 ```
 pi@ctrl $ docker push carmeloc/multiarch:1.0
 
@@ -119,7 +119,7 @@ Step 1/10 : FROM arm32v6/golang:alpine AS builder
 Successfully tagged carmeloc/multiarch:1.1
 ```
 
-Notice how the output shows we're starting from an arm32v6 image now.</br>
+Notice how the output shows we're starting from an arm32v6 image now.
 Nothing has changed on the Controller:
 ```
 pi@ctrl $ docker run --rm --name multiarch carmeloc/multiarch:1.1
@@ -140,9 +140,8 @@ Hello World, I'm 574f49b7c3b9 running on linux/arm
 ```
 
 **Problem resolved**!?!
-</br>
-Er, yes, but that leaves us a bit unimpressed, no? There's not a lot of information on the why-and-wherefore, right?</br>
-</br>
+
+Er, yes, but that leaves us a bit unimpressed, no? There's not a lot of information on the why-and-wherefore, right?
 
 <a name="swarm"></a>
 ### Docker Swarm, finally
