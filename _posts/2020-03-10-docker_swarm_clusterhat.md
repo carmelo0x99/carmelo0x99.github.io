@@ -92,7 +92,7 @@ pi@zero $ docker run --name multiarch10 carmeloc/multiarch:1.0
 pi@zero $ docker logs multiarch10
 ```
 
-**No output, no logs... not good!**</br>
+**No output, no logs... not good!**
 
 <a name="quick"></a>
 ### Quick fix: start from a compatible base layer, arm32v6 images!
