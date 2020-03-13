@@ -5,11 +5,12 @@ categories: misc
 ---
 
 ## Docker Swarm on ClusterHAT
-I've had these nice Raspberry Pi Zero (vanilla, not 'W') lying around for quite some time and I wanted to give them a purpose in life.</br>
-</br>
-By chance (meaning, during my _endless browsing of the Twitter-verse and the Reddit-verse_) I have discovered the ClusterHAT (**H**ardware **A**ttached on **T**op) which "_interfaces a (Controller) Raspberry Pi A+/B+/2/3 with 4 Raspberry Pi Zeros configured to use USB Gadget mode_". To discover more: https://clusterhat.com/.</br>
-</br>
-After installing, breaking, fixing, re-installing multiple times I've found myself with a nice-and-cheap Docker Swarm cluster.</br>
+I've had these nice Raspberry Pi Zero (vanilla, not 'W') lying around for quite some time and I wanted to give them a purpose in life.
+
+By chance (meaning, during my _endless browsing of the Twitter-verse and the Reddit-verse_) I have discovered the ClusterHAT (**H**ardware **A**ttached on **T**op) which "_interfaces a (Controller) Raspberry Pi A+/B+/2/3 with 4 Raspberry Pi Zeros configured to use USB Gadget mode_". To discover more: https://clusterhat.com/.
+
+After installing, breaking, fixing, re-installing multiple times I've found myself with a nice-and-cheap Docker Swarm cluster.
+
 This is the (short) story of how I've put them all to work together and how I've learned a bit about the following topics:
 - [Docker Swarm](https://docs.docker.com/engine/swarm/)
 - [Docker multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/)
@@ -20,7 +21,7 @@ INDEX
 - [Quick fix: start from a compatible base layer, arm32v6 images!](#quick)
 - [Docker Swarm, finally](#swarm)
 
-**NOTE**: during this tutorial I'll be using **ARM32v6** images since the Controller and the Nodes do not share a common hardware architecture. This topic, along with [Buildx](https://www.docker.com/blog/multi-arch-images/), shall wait for another article.</br>
+**NOTE**: during this tutorial I'll be using **ARM32v6** images since the Controller and the Nodes do not share a common hardware architecture. This topic, along with [Buildx](https://www.docker.com/blog/multi-arch-images/), shall wait for another article.
 <a name="basics"></a>
 ### The basics: hardware architecture
 Controller:
