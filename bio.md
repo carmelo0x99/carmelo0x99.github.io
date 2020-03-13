@@ -4,5 +4,5 @@ title: Bio
 permalink: /bio/
 ---
 
-Where: Earth
-Notes: Galileian, agnostic
+- Where: Earth
+- Notes: Galileian, agnostic
