@@ -38,7 +38,7 @@ sudo firewall-cmd --reload
 ```
 
 The following code will be run:
-main.go
+`main.go`
 ```
 package main
 
@@ -66,7 +66,7 @@ func main() {
 }
 ```
 
-A container is automatically built by means of Docker Hub's [automated builds](https://docs.docker.com/docker-hub/builds/) feature. The code is stored on [GitHub: carmeloc/GoWeb](https://github.com/carmeloc/GoWeb) while the contain er can be pulled from [Docker Hub: ccarmelo/goweb](https://hub.docker.com/repository/docker/ccarmelo/goweb).
+A container is automatically built by means of Docker Hub's [automated builds](https://docs.docker.com/docker-hub/builds/) feature. The code is stored on [GitHub: carmeloc/GoWeb](https://github.com/carmeloc/GoWeb) while the container can be pulled from [Docker Hub: ccarmelo/goweb](https://hub.docker.com/repository/docker/ccarmelo/goweb).
 
 Now to the juiciest part, running the app through Docker Swarm.
 ```
@@ -74,8 +74,7 @@ $ docker service create --name=s_goweb --publish 8080:8080 --replicas=2 mellowiz
 ```
 
 The image will be automatically pulled for us and run.
-
-``
+```
 $ docker service ls
 ID                  NAME                MODE                REPLICAS            IMAGE                   PORTS
 l0poe478uir2        s_goweb             replicated          2/2                 mellowiz/goweb:latest
