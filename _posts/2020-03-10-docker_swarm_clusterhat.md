@@ -71,8 +71,9 @@ func main() {
 }
 ```
 
-The first step is to build an image on the Controller and run it:</br>
-```pi@ctrl $ docker build -t carmeloc/multiarch:1.0 .
+The first step is to build an image on the Controller and run it:
+```
+pi@ctrl $ docker build -t carmeloc/multiarch:1.0 .
 Sending build context to Docker daemon  3.072kB
 Step 1/10 : FROM golang:alpine AS builder
 ...
