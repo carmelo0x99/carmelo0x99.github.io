@@ -7,9 +7,9 @@ categories: misc
 ### On any available computers, write the images onto the SDs
 `<type>` = CNAT, p[N]-p4<br/>
 `<device>` = e.g /dev/sdb, /dev/mmcblk0...<br/>
-**NOTE**: in Sep/2019 I've chosen "Stretch" hence "2019-04-08"
+**NOTE**: based on "Stretch" hence "2019-04-08"
 ```
-$ sudo dd if=ClusterCTRL-2019-04-08-lite-4-**<type>**.img of=/dev/**<device>** bs=1M
+$ sudo dd if=ClusterCTRL-2019-04-08-lite-4-<type>.img of=/dev/<device> bs=1M
 ```
 
 Before unmounting the SDs, run the following:
@@ -26,7 +26,7 @@ static routers=<gateway>
 static domain_name_servers=<gateway> <server1> <server2>
 ```
 
-### raspi-config (or manually)
+### Either manually or through raspi-config
 Edit: password, hostname, timezone, SSH
 
 ### Additional steps on Controller
@@ -35,9 +35,10 @@ $ ssh-keygen -t rsa
 
 $ for idx in {1..4}; do ssh-copy-id pi@p${idx}.local; done
 ```
+
 Also, set `vi` as the default editor:
 ```
-$ sudo update-alternatives --config editor
+$ echo 3 | sudo update-alternatives --config editor
 ```
 
 ### Using ClusterHAT
@@ -77,9 +78,9 @@ $ minicom p[N]
 **NOTE**: to quit Minicom use CTRL-A-X
 
 #### All commands
-Command | Purpose
---- | ---
-`$ clusterctrl on` | Turn power to all Pi Zero on
+Command                     | Purpose
+--------------------------- | ---------------------------
+`$ clusterctrl on`          | Turn power to all Pi Zero on
 `$ clusterctrl off` | Turn power to all Pi Zero off
 `$ clusterctrl on p1` | Turn power on to Pi Zero in slot P1
 `$ clusterctrl on p1 p3 p4` | Turn power to Pi Zeros in slot P1, P3 and P4 on
