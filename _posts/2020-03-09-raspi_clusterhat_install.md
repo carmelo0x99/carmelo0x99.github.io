@@ -79,11 +79,9 @@ $ minicom p[N]
 
 #### All commands
 Command                      | Purpose
----------------------------- | --- ------------------------
+---------------------------- | ----------------------------
 test                         | test
 `$ clusterctrl on`           | Turn power to all Pi Zero on
-
-
 `$ clusterctrl off` | Turn power to all Pi Zero off
 `$ clusterctrl on p1` | Turn power on to Pi Zero in slot P1
 `$ clusterctrl on p1 p3 p4` | Turn power to Pi Zeros in slot P1, P3 and P4 on
