@@ -78,6 +78,14 @@ $ minicom p[N]
 **NOTE**: to quit Minicom use CTRL-A-X
 
 #### All commands
+Command | Purpose
+---- | ----
+test | test
+
+
+
+
+
 Command                      | Purpose
 ---------------------------- | ----------------------------------------------------------------------
 `$ clusterctrl on`           | Turn power to all Pi Zero on
