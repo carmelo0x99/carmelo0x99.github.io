@@ -4,7 +4,7 @@ title: "Docker Swarm on ClusterHAT"
 categories: misc
 ---
 
-## Docker Swarm on ClusterHAT
+**to be amended**
 I've had these nice Raspberry Pi Zero (vanilla, not 'W') lying around for quite some time and I wanted to give them a purpose in life.
 
 By chance (meaning, during my _endless browsing of the Twitter-verse and the Reddit-verse_) I have discovered the ClusterHAT (**H**ardware **A**ttached on **T**op) which "_interfaces a (Controller) Raspberry Pi A+/B+/2/3 with 4 Raspberry Pi Zeros configured to use USB Gadget mode_". To discover more: https://clusterhat.com/.
@@ -39,6 +39,7 @@ pi@zero $ docker info | grep Architecture
 Notice how the Controller is based on **ARMv7** while the Zeros are based on **ARMv6**.
 
 **WARNING**: the test app is a (very) silly one. Please do not run any reality checks on the app itself, just focus on the overall process :)
+
 `Dockerfile`:
 ```
 FROM golang:alpine AS builder
@@ -120,6 +121,7 @@ Successfully tagged carmeloc/multiarch:1.1
 ```
 
 Notice how the output shows we're starting from an arm32v6 image now.
+
 Nothing has changed on the Controller:
 ```
 pi@ctrl $ docker run --rm --name multiarch carmeloc/multiarch:1.1
