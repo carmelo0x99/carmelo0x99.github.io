@@ -75,12 +75,12 @@ $ minicom p[N]
  Linux p[N] 4.19.66+ #1253 Thu Aug 15 11:37:30 BST 2019 armv6l
 ...
 ```
-**NOTE**: to quit Minicom use CTRL-A-X
+**NOTE**: to quit Minicom use `CTRL-A-X`
 
-#### All commands
+#### clusterctrl: all commands
 
-Command | Purpose
----- | ----
+Command                      | Purpose
+---------------------------- | ----------------------------
 `$ clusterctrl on`           | Turn power to all Pi Zero on
 `$ clusterctrl off`          | Turn power to all Pi Zero off
 `$ clusterctrl on p1`        | Turn power on to Pi Zero in slot P1
@@ -91,22 +91,6 @@ Command | Purpose
 `$ clusterctrl hub on`       | Turns on USB hub (default)
 `$ clusterctrl hub off`      | Turns off USB hub
 `$ clusterctrl led on`       | Enables Power & P1-P4 LED on Cluster HAT (default)  
-`$ clusterctrl led off`      | Disables Power & P1-P4 LED on Cluster HAT (does not disable ALERT LED)
-`$ clusterctrl wp on`        | Write protects HAT EEPROM
-`$ clusterctrl wp off`       | Disables EEPROM write protect (only needed for updates)
-
-Command                      | Purpose
----------------------------- | ----------------------------------------------------------------------
-`$ clusterctrl on`           | Turn power to all Pi Zero on
-`$ clusterctrl off`          | Turn power to all Pi Zero off
-`$ clusterctrl on p1`        | Turn power on to Pi Zero in slot P1
-`$ clusterctrl on p1 p3 p4`  | Turn power to Pi Zeros in slot P1, P3 and P4 on
-`$ clusterctrl off p2 p3`    | Turn power off to Pi Zeros in slots P2 and P3
-`$ clusterctrl alert on`     | Turns on ALERT LED
-`$ clusterctrl alert off`    | Turns off ALERT LED
-`$ clusterctrl hub on`       | Turns on USB hub (default)
-`$ clusterctrl hub off`      | Turns off USB hub
-`$ clusterctrl led on`       | Enables Power & P1-P4 LED on Cluster HAT (default) 
 `$ clusterctrl led off`      | Disables Power & P1-P4 LED on Cluster HAT (does not disable ALERT LED)
 `$ clusterctrl wp on`        | Write protects HAT EEPROM
 `$ clusterctrl wp off`       | Disables EEPROM write protect (only needed for updates)
