@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Install ClusterHAT software"
+title: "Raspberry PI: install ClusterHAT software"
 categories: misc
 ---
 
