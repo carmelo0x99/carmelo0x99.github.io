@@ -92,7 +92,7 @@ arm32v6/golang   alpine      af1c8ccb1a0f     2 weeks ago       342MB    <<< int
 arm32v6/alpine   latest      8093515ca679     8 weeks ago       4.81MB   <<< intermediate layers
 ```
 
-**NOTE**: a comparison between the size of our image and the arm32v6/golang image shows a dramatic reduction is size. This, again, is one of the benefits [multi-stage build](https://docs.docker.com/develop/develop-images/multistage-build/).
+**NOTE**: a comparison between the size of our image and the arm32v6/golang image shows a dramatic reduction is size. This is the main benefit of [multi-stage build](https://docs.docker.com/develop/develop-images/multistage-build/).
 
 Let's run our image:
 ```
@@ -115,7 +115,7 @@ a8c0d0b5c784     carmeloc/goweb:1.0   "./main.go"   14 minutes ago   Up 14 minut
 
 Once we're satified with our image, we can push it to Docker Hub:
 ```
-$ docker push mellowiz/goweb:1.0
+pi@ctrl $ docker push mellowiz/goweb:1.0
 ```
 **NOTE**: the step above is quite important because Docker Hub doesn't currently build images for ARM processors.
 
@@ -126,7 +126,7 @@ I'll skip the swarm creation part, well documented, and focus on running and sca
 
 Let's take a look at our cluster:
 ```
-$ docker node ls
+pi@ctrl $ docker node ls
 ID                  HOSTNAME  STATUS      AVAILABILITY    MANAGER STATUS    ENGINE VERSION
 74u4z2qw95w0ctz *   ctrl      Ready       Active          Leader            19.03.8
 u0ayftfqi4z728p     zero1     Ready       Active                            19.03.8
@@ -137,7 +137,7 @@ rv24m6fuipawylf     zero4     Ready       Active                            19.0
 
 Let's create a new service as follows:
 ```
-$ docker service create --name goweb --replicas 3 --publish published=8888,target=8080 mellowiz/goweb:1.0
+pi@ctrl $ docker service create --name goweb --replicas 3 --publish published=8888,target=8080 mellowiz/goweb:1.0
 ox51ocpvar7sx1f
 overall progress: 3 out of 3 tasks
 1/3: running   [==================================================>]
@@ -147,15 +147,21 @@ verify: Service converged
 ```
 
 ```
-$ docker service ls
+pi@ctrl $ docker service ls
 ID              NAME           MODE                REPLICAS       IMAGE                PORTS
 htlgxrtss1ox    goweb          replicated          3/3            mellowiz/goweb:1.0   *:8888->8080/tcp
 
-$ docker service ps goweb
+pi@ctrl $ docker service ps goweb
 ID              NAME           IMAGE                NODE      DESIRED STATE     CURRENT STATE                ERROR      PORTS
 fmm9uf112y6j    goweb.1        mellowiz/goweb:1.0   zero2     Running           Running about a minute ago
 w44yl47vtnzi    goweb.2        mellowiz/goweb:1.0   ctrl      Running           Running about a minute ago
 i5ky88du3kbp    goweb.3        mellowiz/goweb:1.0   zero1     Running           Running about a minute ago
+
+pi@ctrl $ docker service inspect --format="{{json .Endpoint.Spec.Ports}}" goweb
+[{"Protocol":"tcp","TargetPort":8080,"PublishedPort":8888,"PublishMode":"ingress"}]
+
+pi@ctrl $ docker service inspect --format="{{json .Spec.TaskTemplate.ContainerSpec.Image}}" goweb
+"mellowiz/goweb:1.0@sha256:***"
 ```
 
 The test is, once agin, run from a different host. Notice how three replicas are responding in round-robin fashion:
