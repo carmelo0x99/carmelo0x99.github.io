@@ -179,3 +179,4 @@ This is fbd04731918f running on linux/arm saying: Hello!
 user@host $ curl http://10.0.2.207:8888/Hello\!
 This is 0801fa03baa6 running on linux/arm saying: Hello!
 ```
+Just like before, the hostnames match the actual containers running on the various nodes.
