@@ -4,7 +4,15 @@ title: "Raspberry PI: install ClusterHAT software"
 categories: misc
 ---
 
-### On any available computers, write the images onto the SDs
+I've had these nice Raspberry Pi Zero (vanilla, not 'W') lying around for quite some time and I wanted to give them a purpose in life.
+
+By chance (meaning, during my _endless browsing of the Twitter-verse and the Reddit-verse_) I have discovered the ClusterHAT (**H**ardware **A**ttached on **T**op) which "_interfaces a (Controller) Raspberry Pi A+/B+/2/3 with 4 Raspberry Pi Zeros configured to use USB Gadget mode_". To discover more: https://clusterhat.com/.
+
+After installing, breaking, fixing, re-installing multiple times I've found myself with a nice-and-cheap Docker Swarm cluster, and a bit of knowledge on Raspberry Pi + ClusterHAT + Docker that I'm happy to share.
+
+This is the (short) story of how I've put them all to work together.
+
+### On any available computers, write the images onto the SDs. For instance, on a *nix machine:
 **Before** starting, clean up the SD card by removing any existing partitions.
 - `<type>` = CBRIDGE, CNAT, p[N]-p4<br/>
 - `<device>` = e.g /dev/sdb, /dev/mmcblk0...<br/>
@@ -18,7 +26,7 @@ Before unmounting the SDs, run the following:
 $ touch /media/<your-username>/boot/ssh
 ```
 
-### Static address
+### Static address [CBRIDGE|CNAT|Zero]
 ```
 $ sudo vi /media/<your-username>/rootfs/etc/dhcpcd.conf
 interface [br0|eth0|usb0]

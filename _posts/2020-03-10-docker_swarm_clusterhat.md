@@ -9,12 +9,13 @@ I've had these nice Raspberry Pi Zero (vanilla, not 'W') lying around for quite 
 
 By chance (meaning, during my _endless browsing of the Twitter-verse and the Reddit-verse_) I have discovered the ClusterHAT (**H**ardware **A**ttached on **T**op) which "_interfaces a (Controller) Raspberry Pi A+/B+/2/3 with 4 Raspberry Pi Zeros configured to use USB Gadget mode_". To discover more: https://clusterhat.com/.
 
-After installing, breaking, fixing, re-installing multiple times I've found myself with a nice-and-cheap Docker Swarm cluster.
+After installing, breaking, fixing, re-installing multiple times I've found myself with a nice-and-cheap Docker Swarm cluster, and a bit of knowledge on Raspberry Pi + ClusterHAT + Docker that I'm happy to share.
 
 This is the (short) story of how I've put them all to work together and how I've learned a bit about the following topics:
 - [Docker Swarm](https://docs.docker.com/engine/swarm/)
 - [Docker multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/)
 - [Docker swarm mode routing mesh](https://docs.docker.com/engine/swarm/ingress/)
+- [Docker and iptables](https://docs.docker.com/network/iptables/)
 
 INDEX
 - [The basics: hardware architecture](#basics)
