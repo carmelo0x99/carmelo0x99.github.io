@@ -82,7 +82,7 @@ pi@ctrl $ docker build -t carmeloc/goweb:1.0 -f Dockerfile.arm .
 Sending build context to Docker daemon  110.6kB
 ...
 Successfully built 1f4eef919f7b
-Successfully tagged mellowiz/goweb:1.0
+Successfully tagged carmeloc/goweb:1.0
 
 pi@ctrl $ docker image ls
 REPOSITORY       TAG         IMAGE ID         CREATED           SIZE
@@ -115,7 +115,7 @@ a8c0d0b5c784     carmeloc/goweb:1.0   "./main.go"   14 minutes ago   Up 14 minut
 
 Once we're satified with our image, we can push it to Docker Hub:
 ```
-pi@ctrl $ docker push mellowiz/goweb:1.0
+pi@ctrl $ docker push carmeloc/goweb:1.0
 ```
 **NOTE**: the step above is quite important because Docker Hub doesn't currently build images for ARM processors.
 
@@ -137,7 +137,7 @@ rv24m6fuipawylf     zero4     Ready       Active                            19.0
 
 Let's create a new service as follows:
 ```
-pi@ctrl $ docker service create --name goweb --replicas 3 --publish published=8888,target=8080 mellowiz/goweb:1.0
+pi@ctrl $ docker service create --name goweb --replicas 3 --publish published=8888,target=8080 carmeloc/goweb:1.0
 ox51ocpvar7sx1f
 overall progress: 3 out of 3 tasks
 1/3: running   [==================================================>]
@@ -146,22 +146,23 @@ overall progress: 3 out of 3 tasks
 verify: Service converged
 ```
 
+The service can be displayed and inspected as follows:
 ```
 pi@ctrl $ docker service ls
 ID              NAME           MODE                REPLICAS       IMAGE                PORTS
-htlgxrtss1ox    goweb          replicated          3/3            mellowiz/goweb:1.0   *:8888->8080/tcp
+htlgxrtss1ox    goweb          replicated          3/3            carmeloc/goweb:1.0   *:8888->8080/tcp
 
 pi@ctrl $ docker service ps goweb
 ID              NAME           IMAGE                NODE      DESIRED STATE     CURRENT STATE                ERROR      PORTS
-fmm9uf112y6j    goweb.1        mellowiz/goweb:1.0   zero2     Running           Running about a minute ago
-w44yl47vtnzi    goweb.2        mellowiz/goweb:1.0   ctrl      Running           Running about a minute ago
-i5ky88du3kbp    goweb.3        mellowiz/goweb:1.0   zero1     Running           Running about a minute ago
+fmm9uf112y6j    goweb.1        carmeloc/goweb:1.0   zero2     Running           Running about a minute ago
+w44yl47vtnzi    goweb.2        carmeloc/goweb:1.0   ctrl      Running           Running about a minute ago
+i5ky88du3kbp    goweb.3        carmeloc/goweb:1.0   zero1     Running           Running about a minute ago
 
 pi@ctrl $ docker service inspect --format="{{json .Endpoint.Spec.Ports}}" goweb
 [{"Protocol":"tcp","TargetPort":8080,"PublishedPort":8888,"PublishMode":"ingress"}]
 
 pi@ctrl $ docker service inspect --format="{{json .Spec.TaskTemplate.ContainerSpec.Image}}" goweb
-"mellowiz/goweb:1.0@sha256:***"
+"carmeloc/goweb:1.0@sha256:***"
 ```
 
 The test is, once agin, run from a different host. Notice how three replicas are responding in round-robin fashion:
