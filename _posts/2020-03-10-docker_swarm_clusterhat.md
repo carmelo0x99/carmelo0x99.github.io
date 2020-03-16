@@ -78,26 +78,38 @@ func main() {
 
 The first step is to build an image on the Controller and run it:
 ```
-$ docker build -t mellowiz/goweb:1.0 .
+pi@ctrl $ docker build -t mellowiz/goweb:1.0 .
 Sending build context to Docker daemon  101.9kB
 ...
 Successfully built 11c04ac64701
 Successfully tagged mellowiz/goweb:1.0
 
-$ docker image ls
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-mellowiz/goweb      1.0                 11c04ac64701        11 minutes ago      11.5MB   <<< new image
-<none>              <none>              bc2d8f7dafec        11 minutes ago      349MB
-arm32v6/golang      alpine              af1c8ccb1a0f        2 weeks ago         342MB    <<< intermediate layers
-arm32v6/alpine      latest              8093515ca679        8 weeks ago         4.81MB   <<< intermediate layers
+pi@ctrl $ docker image ls
+REPOSITORY       TAG         IMAGE ID         CREATED           SIZE
+mellowiz/goweb   1.0         11c04ac64701     11 minutes ago    11.5MB   <<< new image
+<none>           <none>      bc2d8f7dafec     11 minutes ago    349MB
+arm32v6/golang   alpine      af1c8ccb1a0f     2 weeks ago       342MB    <<< intermediate layers
+arm32v6/alpine   latest      8093515ca679     8 weeks ago       4.81MB   <<< intermediate layers
 ```
 
 **NOTE**: a comparison between the size of our image and the arm32v6/golang image shows a dramatic reduction is size. This, again, is one of the benefits [multi-stage build](https://docs.docker.com/develop/develop-images/multistage-build/).
 
 Let's run our image:
 ```
-$ docker run -d -p 8888:8080 mellowiz/goweb:1.0
+pi@ctrl $ docker run -d -p 8888:8080 mellowiz/goweb:1.0
 a8c0d0b5c784251f2afb374c3ed156095ed82004f8501bb4887bb5dedecb07e4
 ```
 
+... and from any host connected to the same subnet:
+```
+user@host $ curl http://10.0.2.207:8888/Hello!
+This is a8c0d0b5c784 running on linux/arm saying: Hello!
+```
+
+Notice how the _hostname_ matches the container ID on the controller:
+```
+pi@ctrl $ docker container ls
+CONTAINER ID        IMAGE                COMMAND             CREATED             STATUS              PORTS                    NAMES
+a8c0d0b5c784        mellowiz/goweb:1.0   "./main.go"         14 minutes ago      Up 14 minutes       0.0.0.0:8888->8080/tcp   happy_spence
+```
 
