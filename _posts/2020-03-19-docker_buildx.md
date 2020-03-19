@@ -6,7 +6,7 @@ categories: misc
 
 ## Buildx: building multi-arch images
 In this post I'll explore how to build images that can run on multiple architectures. My scenario is composed of the two following computers:
-1.
+- x86_64
   ```
   $ docker info | grep Architecture
    Architecture: x86_64
@@ -14,7 +14,7 @@ In this post I'll explore how to build images that can run on multiple architect
   $ cat /proc/cpuinfo | grep "model name" | uniq
   model name	: Intel(R) Core(TM) i5-3317U CPU @ 1.70GHz
   ```
-2.
+- ARM
   ```
   $ docker info | grep Architecture
    Architecture: armv7l
