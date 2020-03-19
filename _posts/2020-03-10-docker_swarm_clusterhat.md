@@ -9,7 +9,7 @@ INDEX
 - [Our app, an HTTP _server_](#app)
 - [Docker Swarm, finally!](#swarm)
 
-**NOTE**: during this tutorial I'll be using **ARM32v6** images since the Controller and the Nodes do not share a common hardware architecture. This topic, along with [Buildx](https://www.docker.com/blog/multi-arch-images/), shall wait for another article.
+**NOTE**: during this tutorial I'll be using **ARM32v6** images since the Controller and the Nodes do not share a common hardware architecture. This topic, along with [Buildx](https://www.docker.com/blog/multi-arch-images/), are covered in (another article)[https://carmeloc.github.io/misc/2020/03/19/docker_buildx.html].
 
 [Installation of ClusterHAT](https://carmeloc.github.io/misc/2020/03/09/raspi_clusterhat_install.html) has been described in a [previous post](https://carmeloc.github.io/misc/2020/03/09/raspi_clusterhat_install.html).
 
