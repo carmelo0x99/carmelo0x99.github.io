@@ -4,7 +4,6 @@ title: "Buildx: building multi-arch images"
 categories: misc
 ---
 
-## Buildx: building multi-arch images
 In this post I'll explore how to build images that can run on multiple architectures. My scenario is composed of the two following computers:
 - x86_64
   ```
