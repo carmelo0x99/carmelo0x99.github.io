@@ -24,20 +24,20 @@ user@laptop$ docker inspect --format="{{json .RootFS.Layers}}" ccarmelo/goweb:la
 Likewise, `docker history` can show how the image had been made:
 ```
 user@laptop$ docker history ccarmelo/goweb:latest
-IMAGE            CREATED          CREATED BY                                      SIZE      COMMENT
-ccf5bf7f5979     7 days ago       /bin/sh -c #(nop)  CMD ["./main.go"]            0B
-<missing>        7 days ago       /bin/sh -c #(nop) COPY file:fe2451faf4c4dbce…   7.47MB
-<missing>        7 days ago       /bin/sh -c #(nop) WORKDIR /app                  0B
-<missing>        7 days ago       /bin/sh -c mkdir /app                           0B
-<missing>        2 months ago     /bin/sh -c #(nop)  CMD ["/bin/sh"]              0B
-<missing>        2 months ago     /bin/sh -c #(nop) ADD file:e69d441d729412d24…   5.59MB
+IMAGE          CREATED        CREATED BY                                      SIZE    COMMENT
+ccf5bf7f5979   7 days ago     /bin/sh -c #(nop)  CMD ["./main.go"]            0B
+<missing>      7 days ago     /bin/sh -c #(nop) COPY file:fe2451faf4c4dbce…   7.47MB
+<missing>      7 days ago     /bin/sh -c #(nop) WORKDIR /app                  0B
+<missing>      7 days ago     /bin/sh -c mkdir /app                           0B
+<missing>      2 months ago   /bin/sh -c #(nop)  CMD ["/bin/sh"]              0B
+<missing>      2 months ago   /bin/sh -c #(nop) ADD file:e69d441d729412d24…   5.59MB
 ```
 
 Let's inspect the actual container now.
 ```
 user@laptop$ docker container ls
-CONTAINER ID     IMAGE                   COMMAND         CREATED           STATUS            PORTS        NAMES
-66df9337ad51     ccarmelo/goweb:latest   "./main.go"     14 minutes ago    Up 14 minutes                  beautiful_williamson
+CONTAINER ID   IMAGE                   COMMAND       CREATED          STATUS          PORTS   NAMES
+66df9337ad51   ccarmelo/goweb:latest   "./main.go"   14 minutes ago   Up 14 minutes           beautiful_williamson
 ```
 
 In reality, the application is obviously running on our host, we can see how it's identified by its PID:
