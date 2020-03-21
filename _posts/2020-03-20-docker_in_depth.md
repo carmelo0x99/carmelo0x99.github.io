@@ -15,7 +15,7 @@ Let's take a closer look at what's in an image.
 
 **NOTE**: I'm filtering out lots of info by using Docker's [format command](https://docs.docker.com/config/formatting/).
 ```
-user@laptop$ docker inspect --format="{{json .RootFS.Layers}}" ccarmelo/goweb:latest
+user@laptop $ docker inspect --format="{{json .RootFS.Layers}}" ccarmelo/goweb:latest
 ["sha256:5216338b40a7b96416b8b9858974bbe4acc3096ee60acbc4dfb1ee02aecceb10",
  "sha256:a0b2ea330c61ec1ec3d25024a8ddaa6121e995e2e3dc2473c48bfdeb7adfab69",
  "sha256:4b7b5c980fbe0abe030c29236a05764ea3c32f898d56495b2bc146d6b82a2c3d"]
@@ -23,7 +23,7 @@ user@laptop$ docker inspect --format="{{json .RootFS.Layers}}" ccarmelo/goweb:la
 
 Likewise, `docker history` can show how the image had been made:
 ```
-user@laptop$ docker history ccarmelo/goweb:latest
+user@laptop $ docker history ccarmelo/goweb:latest
 IMAGE          CREATED        CREATED BY                                      SIZE    COMMENT
 ccf5bf7f5979   7 days ago     /bin/sh -c #(nop)  CMD ["./main.go"]            0B
 <missing>      7 days ago     /bin/sh -c #(nop) COPY file:fe2451faf4c4dbce…   7.47MB
@@ -35,17 +35,17 @@ ccf5bf7f5979   7 days ago     /bin/sh -c #(nop)  CMD ["./main.go"]            0B
 
 Let's inspect the actual container now.
 ```
-user@laptop$ docker container ls
+user@laptop $ docker container ls
 CONTAINER ID   IMAGE                   COMMAND       CREATED          STATUS          PORTS   NAMES
 66df9337ad51   ccarmelo/goweb:latest   "./main.go"   14 minutes ago   Up 14 minutes           beautiful_williamson
 ```
 
 In reality, the application is obviously running on our host, we can see how it's identified by its PID:
 ```
-user@laptop$ ps -ef | grep main.go | grep -v grep
+user@laptop $ ps -ef | grep main.go | grep -v grep
 root      3993  3970  0 17:38 ?        00:00:00 ./main.go
 
-user@laptop$ docker inspect 66df9337ad51 | grep -i pid
+user@laptop $ docker inspect 66df9337ad51 | grep -i pid
             "Pid": 3993,
             "PidMode": "",
             "PidsLimit": null,
@@ -53,7 +53,7 @@ user@laptop$ docker inspect 66df9337ad51 | grep -i pid
 
 We can also connect to the running container. From within, it looks as if we're in a totally separate environment:
 ```
-user@laptop$ docker exec -it 66df sh
+user@laptop $ docker exec -it 66df sh
 
 /app # hostname
 66df9337ad51
@@ -88,7 +88,7 @@ Docker uses a technology called _namespaces_ to provide the container with a lay
 
 Let's analyze namespaces by, for instance, inheriting the _hostname_:
 ```
-user@laptop$ sudo nsenter --target 3993 --uts
+user@laptop $ sudo nsenter --target 3993 --uts
 root@66df9337ad51:~# hostname
 66df9337ad51
 
@@ -113,7 +113,7 @@ root@66df9337ad51:~# exit
 
 Let's now try something different and borrow the container's network settings:
 ```
-user@laptop$ sudo nsenter --target 3993 --net
+user@laptop $ sudo nsenter --target 3993 --net
 
 root@laptop:~# hostname
 laptop
@@ -133,7 +133,7 @@ Docker Engine on Linux also relies on another technology called _control groups_
 
 Let's see an example of how memory can be limited for a container.
 ```
-user@laptop$ cat /proc/3993/cgroup
+user@laptop $ cat /proc/3993/cgroup
 12:net_cls,net_prio:/docker/66df9337ad51dd25ed8befe778bfe19698df8636a3fbfb45c4257899d93d9a86
 11:memory:/docker/66df9337ad51dd25ed8befe778bfe19698df8636a3fbfb45c4257899d93d9a86
 10:pids:/docker/66df9337ad51dd25ed8befe778bfe19698df8636a3fbfb45c4257899d93d9a86
@@ -148,13 +148,13 @@ user@laptop$ cat /proc/3993/cgroup
 1:name=systemd:/docker/66df9337ad51dd25ed8befe778bfe19698df8636a3fbfb45c4257899d93d9a86
 0::/system.slice/containerd.service
 
-user@laptop$ cat /sys/fs/cgroup/memory/docker/66df9337ad51dd25ed8befe778bfe19698df8636a3fbfb45c4257899d93d9a86/memory.limit_in_bytes
+user@laptop $ cat /sys/fs/cgroup/memory/docker/66df9337ad51dd25ed8befe778bfe19698df8636a3fbfb45c4257899d93d9a86/memory.limit_in_bytes
 9223372036854771712
 
-user@laptop$ docker run -d --memory 4m --name test4m ccarmelo/goweb:latest
+user@laptop $ docker run -d --memory 4m --name test4m ccarmelo/goweb:latest
 WARNING: Your kernel does not support swap limit capabilities or the cgroup is not mounted. Memory limited without swap.
 051f309ee14220936dd6a746341cde687c94bca45108a9413ba7fcc1ee323520
 
-user@laptop$ cat /sys/fs/cgroup/memory/docker/051f309ee14220936dd6a746341cde687c94bca45108a9413ba7fcc1ee323520/memory.limit_in_bytes
+user@laptop $ cat /sys/fs/cgroup/memory/docker/051f309ee14220936dd6a746341cde687c94bca45108a9413ba7fcc1ee323520/memory.limit_in_bytes
 4194304
 ```
