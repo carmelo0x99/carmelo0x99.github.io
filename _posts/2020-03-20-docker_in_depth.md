@@ -14,12 +14,14 @@ INDEX
 Let's take a closer look at what's in an image.
 
 **NOTE**: I'm filtering out lots of info by using Docker's [format command](https://docs.docker.com/config/formatting/).
+{% raw %}
 ```
 user@laptop $ docker inspect --format="{{json .RootFS.Layers}}" ccarmelo/goweb:latest
 ["sha256:5216338b40a7b96416b8b9858974bbe4acc3096ee60acbc4dfb1ee02aecceb10",
  "sha256:a0b2ea330c61ec1ec3d25024a8ddaa6121e995e2e3dc2473c48bfdeb7adfab69",
  "sha256:4b7b5c980fbe0abe030c29236a05764ea3c32f898d56495b2bc146d6b82a2c3d"]
 ```
+{% endraw %}
 
 Likewise, `docker history` can show how the image had been made:
 ```
