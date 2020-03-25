@@ -22,8 +22,9 @@ user@laptop $ docker inspect --format="{{json .RootFS.Layers}}" ccarmelo/goweb:l
  "sha256:4b7b5c980fbe0abe030c29236a05764ea3c32f898d56495b2bc146d6b82a2c3d"]
 ```
 {% endraw %}
+One can see that, for instance, the image above is made up of three different layers.
 
-Likewise, `docker history` can show how the image had been made:
+Likewise, `docker history` can show how the image had been built:
 ```
 user@laptop $ docker history ccarmelo/goweb:latest
 IMAGE          CREATED        CREATED BY                                      SIZE    COMMENT
@@ -35,7 +36,7 @@ ccf5bf7f5979   7 days ago     /bin/sh -c #(nop)  CMD ["./main.go"]            0B
 <missing>      2 months ago   /bin/sh -c #(nop) ADD file:e69d441d729412d24…   5.59MB
 ```
 
-Let's inspect the actual container now.
+A container runs off the image but is an entirely different object.
 ```
 user@laptop $ docker container ls
 CONTAINER ID   IMAGE                   COMMAND       CREATED          STATUS          PORTS   NAMES
