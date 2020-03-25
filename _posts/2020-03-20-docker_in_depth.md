@@ -165,7 +165,8 @@ user@laptop $ cat /sys/fs/cgroup/memory/docker/051f309ee14220936dd6a746341cde687
 
 <a name="scratch"></a>
 ### Images from scratch
-So far we've always started from pre-built images whose contents was unknown until we'd run them. There's an alternative way to building custom images and that's starting from _scratch_.</br>
+So far we've always started from pre-built images whose contents was unknown until we'd run them. There's an alternative way to building custom images and that's starting from _scratch_.
+
 This approach entails downloading the filesystem first, then adding our customizations on top of it. Alpine is a very convenient distribution since it's mini root filesystem is very limited in size:
 ```
 user@laptop $ curl -O http://dl-cdn.alpinelinux.org/alpine/v3.11/releases/x86_64/alpine-minirootfs-3.11.5-x86_64.tar.gz
