@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Docker in depth"
+title: "Docker in depth: namespaces, cgroups, images from scratch"
 categories: misc
 ---
 
@@ -8,6 +8,7 @@ INDEX
 - [Images and containers](#images)
 - [Namespaces](#ns)
 - [Cgroups](#cg)
+- [Images from scratch](#scratch)
 
 <a name="images"></a>
 ### Images and containers
@@ -161,3 +162,73 @@ WARNING: Your kernel does not support swap limit capabilities or the cgroup is n
 user@laptop $ cat /sys/fs/cgroup/memory/docker/051f309ee14220936dd6a746341cde687c94bca45108a9413ba7fcc1ee323520/memory.limit_in_bytes
 4194304
 ```
+
+<a name="scratch"></a>
+### Images from scratch
+So far we've always started from pre-built images whose contents was unknown until we'd run them. There's an alternative way to building custom images and that's starting from _scratch_.
+This approach entails downloading the filesystem first, then adding our customizations on top of it. Alpine is a very convenient distribution since it's mini root filesystem is very limited in size:
+```
+user@laptop $ curl -O http://dl-cdn.alpinelinux.org/alpine/v3.11/releases/x86_64/alpine-minirootfs-3.11.5-x86_64.tar.gz
+
+user@laptop $ ls -lh
+total 2.7M
+-rw-rw-r-- 1 user user 2.6M Mar 25 11:10 alpine-minirootfs-3.11.5-x86_64.tar.gz
+```
+
+Let's build an image based on it and add our own customization. We'll need the following files:
+`Dockerfile`:
+```
+FROM scratch
+ADD alpine-minirootfs-3.11.5-x86_64.tar.gz /
+COPY os-release /etc/
+CMD ["/bin/sh"]
+```
+
+`os-release`:
+```
+NAME="My cool-and-small image"
+ID=alpine
+VERSION_ID=1.0
+PRETTY_NAME="Based on Alpine Linux v3.11"
+HOME_URL="https://alpinelinux.org/"
+BUG_REPORT_URL="https://bugs.alpinelinux.org/"
+```
+
+We can start the build process as follows now:
+```
+user@laptop docker build -t ccarmelo/scratch:1.0 .
+Sending build context to Docker daemon  2.728MB
+Step 1/4 : FROM scratch
+ --->
+Step 2/4 : ADD alpine-minirootfs-3.11.5-x86_64.tar.gz /
+ ---> 5beb49a29512
+Step 3/4 : COPY os-release /etc/
+ ---> 034d3918f9ac
+Step 4/4 : CMD ["/bin/sh"]
+ ---> Running in a494bc027971
+Removing intermediate container a494bc027971
+ ---> 786e178aee95
+Successfully built 786e178aee95
+Successfully tagged ccarmelo/scratch:1.0
+```
+
+One thing to notice is how small our image is:
+```
+user@laptop docker image ls
+REPOSITORY          TAG                                        IMAGE ID            CREATED             SIZE
+ccarmelo/scratch    1.0                                        786e178aee95        14 seconds ago      5.6MB
+...
+```
+
+Next and last step is to verify that the image is behaving as intended:
+```
+user@laptop docker run -it ccarmelo/scratch:1.0 sh
+/ # cat /etc/os-release
+NAME="My cool-and-small image"
+ID=alpine
+VERSION_ID=1.0
+PRETTY_NAME="Based on Alpine Linux v3.11"
+HOME_URL="https://alpinelinux.org/"
+BUG_REPORT_URL="https://bugs.alpinelinux.org/"
+```
+
