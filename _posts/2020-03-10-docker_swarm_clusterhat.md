@@ -180,3 +180,10 @@ user@host $ curl http://10.0.2.207:8888/Hello\!
 This is 0801fa03baa6 running on linux/arm saying: Hello!
 ```
 Just like before, the hostnames match the actual containers running on the various nodes.
+
+**NOTE**: sending a space can be attained by replacing " " with "%20" as such:
+```
+user@host $ curl http://10.0.2.207:8888/Hello%20there\!
+This is d3ffa4006aa8 running on linux/arm saying: Hello there!
+```
+
