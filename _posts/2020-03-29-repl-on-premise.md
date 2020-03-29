@@ -63,7 +63,8 @@ EOF
 
 ### Run
 ```
-nodebook-linux --bindaddress 10.0.2.145 --port 9001 --docker ~/Nodebooks &
+nodebook-linux --bindaddress <ip_address> --port <port> --docker ~/Nodebooks &
 ```
 
 Point your browser to <ip_address>:<port> and have fun!
+
