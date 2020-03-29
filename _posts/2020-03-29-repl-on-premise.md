@@ -4,10 +4,10 @@ title: "Running a REPL on-premise"
 categories: misc
 ---
 
-## Nodebook - Multi-Language REPL with Web UI + CLI code runner: https://github.com/netgusto/nodebook
+### Nodebook - Multi-Language REPL with Web UI + CLI code runner: https://github.com/netgusto/nodebook
 **NOTE**: [REPL](https://en.wikipedia.org/wiki/Read–eval–print_loop) stands for [Read-Eval-Print Loop](https://en.wikipedia.org/wiki/Read–eval–print_loop)
 
-### set up CentOS
+#### set up CentOS
 ```
 sudo sed -i "s/^#PermitRootLogin yes/PermitRootLogin prohibit-password/" //etc/ssh/sshd_config
 
@@ -18,7 +18,7 @@ sudo systemctl restart sshd
 sudo firewall-cmd --permanent --add-port=9001/tcp && sudo firewall-cmd --reload
 ```
 
-### Install Docker
+#### Install Docker
 ```
 sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 
@@ -31,7 +31,7 @@ sudo systemctl enable --now docker
 sudo usermod -aG docker mellowiz
 ```
 
-### Deploy Nodebook
+#### Deploy Nodebook
 ```
 curl -LO https://github.com/netgusto/nodebook/releases/download/0.2.0/nodebook-linux
 
@@ -61,7 +61,7 @@ func main() {
 EOF
 ```
 
-### Run
+#### Run
 ```
 nodebook-linux --bindaddress <ip_address> --port <port> --docker ~/Nodebooks &
 ```
