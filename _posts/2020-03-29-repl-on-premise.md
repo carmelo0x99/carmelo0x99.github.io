@@ -4,7 +4,8 @@ title: "Running a REPL on-premise"
 categories: misc
 ---
 
-### Nodebook - Multi-Language REPL with Web UI + CLI code runner: https://github.com/netgusto/nodebook
+### Nodebook - Multi-Language REPL with Web UI + CLI code runner: [https://github.com/netgusto/nodebook](https://github.com/netgusto/nodebook)
+
 **NOTE**: [REPL](https://en.wikipedia.org/wiki/Read–eval–print_loop) stands for [Read-Eval-Print Loop](https://en.wikipedia.org/wiki/Read–eval–print_loop)
 
 #### set up CentOS
