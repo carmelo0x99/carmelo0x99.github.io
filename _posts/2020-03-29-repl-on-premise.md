@@ -8,7 +8,7 @@ categories: misc
 
 **NOTE**: [REPL](https://en.wikipedia.org/wiki/Read–eval–print_loop) stands for [Read-Eval-Print Loop](https://en.wikipedia.org/wiki/Read–eval–print_loop)
 
-#### set up CentOS
+#### Set up OS (e.g. CentOS 7)
 ```
 sudo sed -i "s/^#PermitRootLogin yes/PermitRootLogin prohibit-password/" //etc/ssh/sshd_config
 
@@ -42,6 +42,7 @@ mkdir -p Nodebooks/Golang Nodebooks/Python3
 ```
 
 The directory above, `Nodebooks`, will be used to store any code we'll create and run on our REPL. To start with, let's create the following files:
+
 `Python3/main.py`:
 ```
 cat << EOF > Nodebooks/Python3/main.py
