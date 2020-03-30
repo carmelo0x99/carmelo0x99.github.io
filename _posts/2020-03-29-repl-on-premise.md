@@ -4,13 +4,14 @@ title: "Running a REPL on-premise"
 categories: misc
 ---
 
-### Nodebook - Multi-Language REPL with Web UI + CLI code runner: [https://github.com/netgusto/nodebook](https://github.com/netgusto/nodebook)
+### Nodebook
+Nodebook is a multi-language [REPL](https://en.wikipedia.org/wiki/Read–eval–print_loop) offering both a web UI and a CLI interface. Github: [https://github.com/netgusto/nodebook](https://github.com/netgusto/nodebook)
 
-**NOTE**: [REPL](https://en.wikipedia.org/wiki/Read–eval–print_loop) stands for [Read-Eval-Print Loop](https://en.wikipedia.org/wiki/Read–eval–print_loop)
+**NOTE**: REPL: [Read-Eval-Print Loop](https://en.wikipedia.org/wiki/Read–eval–print_loop)
 
 #### Set up OS (e.g. CentOS 7)
 ```
-sudo sed -i "s/^#PermitRootLogin yes/PermitRootLogin prohibit-password/" //etc/ssh/sshd_config
+sudo sed -i "s/^#PermitRootLogin yes/PermitRootLogin prohibit-password/" /etc/ssh/sshd_config
 
 sudo sed -i "s/^#UseDNS yes/UseDNS no/" /etc/ssh/sshd_config
 
@@ -18,6 +19,7 @@ sudo systemctl restart sshd
 
 sudo firewall-cmd --permanent --add-port=9001/tcp && sudo firewall-cmd --reload
 ```
+**IMPORTANT**: be aware of any security implcations when running such an application. There's always a chance to run malicious code that can harm the guest OS. By default the application listens and responds to requests coming from localhost only. This setting can be overridden by using `--bindaddress`, see below.
 
 #### Install Docker
 ```
