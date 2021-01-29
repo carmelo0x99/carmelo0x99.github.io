@@ -69,19 +69,19 @@ user@armi $ docker inspect carmelo0x99/hellogo:x86_64 | grep Architecture
 
 ### Enters buildx
 ```
+user@x86_64 $ docker buildx version
+github.com/docker/buildx v0.5.1-docker 11057da37336192bfc57d81e02359ba7ba848e4a
+
 user@x86_64 $ export DOCKER_CLI_EXPERIMENTAL=enabled
 
-user@x86_64 $ docker buildx version
-github.com/docker/buildx v0.4.2-tp-docker fb7b670b764764dc4716df3eba07ffdae4cc47b2
-
-user@x86_64 $ docker run --rm --privileged docker/binfmt:a7996909642ee92942dcd6cff44b9b95f08dad64
+<!--user@x86_64 $ docker run --rm --privileged docker/binfmt:a7996909642ee92942dcd6cff44b9b95f08dad64
 Unable to find image 'docker/binfmt:a7996909642ee92942dcd6cff44b9b95f08dad64' locally
 a7996909642ee92942dcd6cff44b9b95f08dad64: Pulling from docker/binfmt
 5d6ca6c8ba77: Pull complete
 b26a8e2c75fc: Pull complete
 3436361ddd98: Pull complete
 Digest: sha256:758ca0563f371b384cfd67b6590b5be2dc024fef45bc14a050ae104f0caad14e
-Status: Downloaded newer image for docker/binfmt:a7996909642ee92942dcd6cff44b9b95f08dad64
+Status: Downloaded newer image for docker/binfmt:a7996909642ee92942dcd6cff44b9b95f08dad64-->
 
 user@x86_64 $ docker buildx create --use --name builderx
 builderx
@@ -108,11 +108,20 @@ failed to solve: rpc error: code = Unknown desc = docker exporter does not curre
 ### `push` works instead
 ```
 user@x86_64 $ docker buildx build -t carmelo0x99/hellogo:2.0 --platform linux/amd64,linux/386,linux/arm/v7,linux/arm/v6 --push .
-[+] Building 14.1s (48/48) FINISHED
- => [internal] load build definition from Dockerfile
+[+] Building 144.5s (51/51) FINISHED
+ => [internal] booting buildkit                                                        16.2s
+ => => pulling image moby/buildkit:buildx-stable-1                                     14.8s
+ => => creating container buildx_buildkit_builderx0                                     1.4s
+ => [internal] load build definition from Dockerfile                                    0.1s
+ => => transferring dockerfile: 230B                                                    0.0s
+ => [internal] load .dockerignore                                                       0.2s
+ => => transferring context: 2B0.0s
+ => [linux/amd64 internal] load metadata for docker.io/library/golang:alpine            6.8s
+ => [linux/amd64 internal] load metadata for docker.io/library/alpine:latest            6.8s
 ...
- => => pushing layers	7.7s
- => => pushing manifest for docker.io/ccarmelo/hellogo:1.1
+=> => pushing layers                                                                   10.3s
+ => => pushing manifest for docker.io/carmelo0x99/goweb:multiarch                       2.4s
+ => [auth] carmelo0x99/goweb:pull,push token for registry-1.docker.io                   0.0s
 ```
 
 Problem is we need to pull the image back from Docker Hub.
